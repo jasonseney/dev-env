@@ -28,9 +28,6 @@ alias rm="echo '*** WARNING: USE trash INSTEAD!!! ***'; rm -i"
 
 # *** Functions ***
 
-# Upload image to Imgur and return its URL. Get API key at http://imgur.com/register/api_anon
-imgur() { curl -F "image=@$1" -F "key=ANONYMOUS_IMGUR_API_KEY" https://api.imgur.com/2/upload | egrep -o "<original>.+?</original>" | egrep -o "http://imgur\.com/[^<]+" | sed "s/imgur.com/i.imgur.com/" | tee >(pbcopy); }
-
 # Open secure files
 vimdecrypt() { gpg -d "$1" | vim - -n -i "NONE" "+set filetype=$2"; }
 
