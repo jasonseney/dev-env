@@ -1,0 +1,20 @@
+# Vim Notes
+
+**TODO:** _Switch to Vundle for dependencies and plugins._
+
+## Plugins
+
+- [NERDTree](https://github.com/scrooloose/nerdtree)
+- [Gundo](http://sjl.bitbucket.org/gundo.vim/)
+- [Markdown (Tim Pope)](https://github.com/tpope/vim-markdown)
+- [MatchTag](https://github.com/gregsexton/MatchTag)
+
+## Colors
+
+- earendel.vim
+- lucius.vim
+- molokai.vim
+- moria.vim
+- neon-dark.vim
+- neon.vim
+- rdark.vim
