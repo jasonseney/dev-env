@@ -38,3 +38,10 @@ download() { curl -o ${1##*/} $1; }
 
 # Ruby Environment
 eval "$(rbenv init -)"
+
+# Git Scripts
+source ~/.git-prompt.sh
+
+# Command Prompt
+export PS1='\033[0;35m\W\033[0;36m$(__git_ps1) \033[0;32m\$ \033[0m'
+
