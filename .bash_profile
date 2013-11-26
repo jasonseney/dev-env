@@ -26,6 +26,13 @@ alias ql="qlmanage -p 2>/dev/null" # preview a file using QuickLook
 # Protect yourself from yourself
 alias rm="echo '*** WARNING: USE trash INSTEAD!!! ***'; rm -i"
 
+# View formatted JSON from the clipboard
+if hash jq 2>/dev/null; then
+    alias jsonview="pbpaste | jq . -r | vim - \"+set ft=javascript fdm=indent\""
+else
+    alias jsonview="pbpaste | python -m json.tool | vim - \"+set ft=javascript fdm=indent\""
+fi
+
 # *** Functions ***
 
 # Open secure files
