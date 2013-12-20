@@ -47,10 +47,19 @@ download() { curl -o ${1##*/} $1; }
 # eval "$(rbenv init -)"
 
 # Git Scripts
-# source ~/.git-prompt.sh
+source ~/git-prompt.sh
 
-# Command Prompt
-export PS1='\033[0;35m\W\033[0;36m$(__git_ps1) \033[0;32m\$ \033[0m'
+# Command Prompt (requires git-prompt)
+red=$(      tput setaf 1)
+green=$(    tput setaf 2)
+yellow=$(   tput setaf 3)
+blue=$(     tput setaf 4)
+magenta=$(  tput setaf 5)
+cyan=$(     tput setaf 6)
+white=$(    tput setaf 7)
+reset=$(    tput sgr0   )
+
+export PS1='\[$magenta\]\W\[$cyan\]$(\__git_ps1) \[$green\]\$ \[$reset\]'
 
 # Use Homebrew apps first
 export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
