@@ -69,18 +69,9 @@ set nu
 set background=dark
 colorscheme neon-dark
 
-" Gui
-if has('gui_running')
-    set guifont=Menlo:h18
-    set guioptions=egmrLt
-    set guitablabel=%M%t
-    set guioptions-=T           " remove the toolbar
-    set lines=50                " 40 lines of text instead of 24,
-    set columns=140
-    set transparency=20         " Make the window slightly transparent
-else
-    " terminal vim here
-endif
+" Debugging 
+" ** See notes for options **
+let g:vdebug_options= {}
 
 " Load Plugins
 call pathogen#infect()
@@ -90,6 +81,8 @@ call pathogen#runtime_append_all_bundles()
 filetype on
 filetype plugin indent on
 
+au BufRead,BufNewFile *.tpl set filetype=php 
+
 " Tabs for specific filetypes
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
@@ -97,6 +90,10 @@ autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 let NERDTreeShowHidden=1
 let NERDTreeChDirMode=2
 command NT NERDTreeToggle
+
+" Tag List
+let Tlist_Show_One_File = 1
+command TT TlistToggle
 
 " Marked.app support
 :nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
@@ -121,3 +118,20 @@ command -nargs=1 -bar FindText vimgrep /<args>/gj ./**/*.* | copen
 
 " Run matchit for matching XML/HTML tags (use % when on tag)
 runtime macros/matchit.vim
+
+" Shortcut for writing file then syncing
+command Gs w | !git-sync -y
+
+" Gui
+if has('gui_running')
+    set guifont=Menlo:h18
+    set guioptions=egmrLt
+    set guitablabel=%M%t
+    set guioptions-=T           " remove the toolbar
+    set lines=50                " 40 lines of text instead of 24,
+    set columns=140
+    set transparency=20         " Make the window slightly transparent
+else
+    " terminal vim here
+endif
+
