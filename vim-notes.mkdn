@@ -9,10 +9,9 @@
 - [Markdown (Tim Pope)](https://github.com/tpope/vim-markdown)
 - [Surround](http://github.com/tpope/vim-surround)
 - [MatchTag](https://github.com/gregsexton/MatchTag)
-- [Vdebug](https://github.com/joonty/vdebug) (with Xdebug)
+- [Vdebug](https://github.com/joonty/vdebug) (with [Xdebug](http://xdebug.org))
 - [Cscope](http://cscope.sourceforge.net/cscope_vim_tutorial.html)
 - [Exuberant Ctags](http://ctags.sourceforge.net) with [Tag List](http://vim-taglist.sourceforge.net)
-
 
 ## Colors
 
@@ -23,3 +22,33 @@
 - neon-dark.vim
 - neon.vim
 - rdark.vim
+
+## Misc
+
+#### Vdebug Instructions
+
+1. Follow [instructions](https://github.com/joonty/vdebug#installation) to install the Vdebug plugin
+2. Add this to your `.vimrc` file (before  any calls to `pathogen#infect` or sourcing the plugin). Be sure to set the correct path to your app source.
+
+        let g:vdebug_options= {
+        \ "port" : 9000,
+        \ "server" : "",
+        \ "path_maps" : {"/var/www/apps/myapp" : "PATH_TO_APP_LOCAL"}
+        \}
+    Note: The empty string for the server attribute is required and will not work without it.
+
+3. Press `<F5>` to start the debugger, then go to browser and initiate a new request in the web browser with the xdebug helper turned on.
+
+#### Cscope
+
+- Generate the cscope file
+- Add references using `:cscope add myscopefile.out`. 
+- Place your cursor on a reference and then press `ctrl-\ s`.
+
+#### Tips
+
+Learn the following well:
+
+- Using surround to select text inside of stuff
+- Match tags with `%` or `v i t` to select inside tags
+- All the NerdTree shortcuts, especially open in vertical split!
