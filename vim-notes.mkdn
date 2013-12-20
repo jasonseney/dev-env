@@ -7,7 +7,12 @@
 - [NERDTree](https://github.com/scrooloose/nerdtree)
 - [Gundo](http://sjl.bitbucket.org/gundo.vim/)
 - [Markdown (Tim Pope)](https://github.com/tpope/vim-markdown)
+- [Surround](http://github.com/tpope/vim-surround)
 - [MatchTag](https://github.com/gregsexton/MatchTag)
+- [Vdebug](https://github.com/joonty/vdebug) (with Xdebug)
+- [Cscope](http://cscope.sourceforge.net/cscope_vim_tutorial.html)
+- [Exuberant Ctags](http://ctags.sourceforge.net) with [Tag List](http://vim-taglist.sourceforge.net)
+
 
 ## Colors
 
