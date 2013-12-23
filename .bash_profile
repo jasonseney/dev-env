@@ -61,6 +61,9 @@ reset=$(    tput sgr0   )
 
 export PS1='\[$magenta\]\W\[$cyan\]$(\__git_ps1) \[$green\]\$ \[$reset\]'
 
+# Fix incorrect text width in shell with custom PS1
+shopt -s checkwinsize
+
 # Use Homebrew apps first
 export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 
