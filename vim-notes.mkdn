@@ -23,6 +23,16 @@
 - neon.vim
 - rdark.vim
 
+## Searching
+
+For text inside of files, use **SilverSearcher** `:Ag "some text"`
+
+For matching file names, use **Ctl-P** and press `<ctrl-P>` and then your search text.
+
+## Syntax Checking and Linting
+
+Use **Syntastic**, with JSHint for Javascript. To check a file either save or use `:SyntasticCheck`. View the list of errors by typing `:Errors`.
+
 ## Misc
 
 #### Vdebug Instructions
