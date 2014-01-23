@@ -48,6 +48,7 @@ download() { curl -o ${1##*/} $1; }
 
 # Git Scripts
 source ~/git-prompt.sh
+source ~/git-completion.sh
 
 # Command Prompt (requires git-prompt)
 red=$(      tput setaf 1)
