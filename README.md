@@ -28,3 +28,5 @@ Tools to install with **Homebrew**:
 - `git` (source control)
 - `cscope` (generates "tags" for `C` or `PHP`)
 - `ctags` (exhuberent c-tags, view functions and variables, used for `taglist` in vim)
+- `rbenv` (manage ruby versions)
+- `ruby-build` (install ruby versions)
