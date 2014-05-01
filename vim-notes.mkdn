@@ -11,7 +11,7 @@
 - [MatchTag](https://github.com/gregsexton/MatchTag)
 - [Vdebug](https://github.com/joonty/vdebug) (with [Xdebug](http://xdebug.org))
 - [Cscope](http://cscope.sourceforge.net/cscope_vim_tutorial.html)
-- [Exuberant Ctags](http://ctags.sourceforge.net) with [Tag List](http://vim-taglist.sourceforge.net)
+- [Exuberant Ctags](http://ctags.sourceforge.net) with [Tag Bar](https://github.com/majutsushi/tagbar)
 
 ## Colors
 
@@ -54,6 +54,16 @@ Use **Syntastic**, with JSHint for Javascript. To check a file either save or us
 - Generate the cscope file
 - Add references using `:cscope add myscopefile.out`. 
 - Place your cursor on a reference and then press `ctrl-\ s`.
+
+#### Taglist
+
+Add this to `.vimrc`:
+
+    " Tag List
+    let Tlist_Show_One_File = 1
+    command TT TlistToggle
+
+In vim, type `:TT` to open the taglist
 
 #### Tips
 

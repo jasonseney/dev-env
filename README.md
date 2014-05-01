@@ -11,6 +11,7 @@ Scripts to install in `/usr/local/bin`:
 
 - [Git Delete Branch](https://github.com/elliottcarlson/git-delete-branch)
 - [Git Create Branch](https://github.com/jasonseney/git-create-branch)
+- [Git Pull Request](https://github.com/jasonseney/git-pr)
 
 Scripts to source:
 
