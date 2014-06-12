@@ -37,6 +37,11 @@ set directory+=~/.vim/swap//
 set directory+=~/tmp//
 set directory+=.
 
+" Write to swap every 2 seconds
+set updatetime=2000
+
+
+"
 " viminfo stores the the state of your previous editing session
 set viminfo+=n~/.vim/viminfo
 
@@ -70,8 +75,11 @@ set background=dark
 colorscheme neon-dark
 
 " Debugging 
-" ** See notes for options **
-let g:vdebug_options= {}
+let g:vdebug_options= {
+\   "port" : 9000,
+\   "server" : "",
+\   "path_maps" : {"/var/www/apps/tumblr" : "/Users/jasonseney/src/tumblr"}
+\}
 
 " Load Plugins
 call pathogen#infect()
@@ -86,14 +94,27 @@ au BufRead,BufNewFile *.tpl set filetype=php
 " Tabs for specific filetypes
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
+" Disable auto comment continuation
+" http://vim.wikia.com/wiki/Disable_automatic_comment_insertion
+" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " Nerdtree
 let NERDTreeShowHidden=1
 let NERDTreeChDirMode=2
 command NT NERDTreeToggle
 
-" Tag List
-let Tlist_Show_One_File = 1
-command TT TlistToggle
+" Tag Bar
+command TB Tagbar
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_max_files = 0
+au VimEnter,VimResized * let g:ctrlp_max_height = &lines
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 " Marked.app support
 :nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
@@ -121,6 +142,9 @@ runtime macros/matchit.vim
 
 " Shortcut for writing file then syncing
 command Gs w | !git-sync -y
+command Go w | !gulp && git-sync 
+
+command Gist %y+ | !`gist -P -f %:t | pbcopy`
 
 " Gui
 if has('gui_running')
@@ -134,4 +158,3 @@ if has('gui_running')
 else
     " terminal vim here
 endif
-
