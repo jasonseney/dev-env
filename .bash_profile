@@ -1,4 +1,4 @@
-# Bash Profile - For OS X
+#Bash Profile - For OS X
 
 # *** Shortcuts ***
 alias ..="cd .."
@@ -23,15 +23,14 @@ alias gzip="gzip -9n" # set strongest compression level as ‘default’ for gzi
 alias ping="ping -c 5" # ping 5 times ‘by default’
 alias ql="qlmanage -p 2>/dev/null" # preview a file using QuickLook
 
+if hash jq 2>/dev/null; then
+    alias jsonview="pbpaste | jq . -r | mvim - \"+set ft=javascript fdm=indent\""
+else
+    alias jsonview="pbpaste | python -m json.tool | mvim - \"+set ft=javascript fdm=indent\""
+fi
+
 # Protect yourself from yourself
 alias rm="echo '*** WARNING: USE trash INSTEAD!!! ***'; rm -i"
-
-# View formatted JSON from the clipboard
-if hash jq 2>/dev/null; then
-    alias jsonview="pbpaste | jq . -r | vim - \"+set ft=javascript fdm=indent\""
-else
-    alias jsonview="pbpaste | python -m json.tool | vim - \"+set ft=javascript fdm=indent\""
-fi
 
 # *** Functions ***
 
@@ -43,10 +42,7 @@ vimdecrypt() { gpg -d "$1" | vim - -n -i "NONE" "+set filetype=$2"; }
 # Downloads `myfile.txt` in pwd, using the name from url
 download() { curl -o ${1##*/} $1; }
 
-# Ruby Environment
-# eval "$(rbenv init -)"
-
-# Git Scripts
+# Git 
 source ~/git-prompt.sh
 source ~/git-completion.sh
 
@@ -58,12 +54,34 @@ blue=$(     tput setaf 4)
 magenta=$(  tput setaf 5)
 cyan=$(     tput setaf 6)
 white=$(    tput setaf 7)
+bold=$(     tput bold   )
 reset=$(    tput sgr0   )
 
 export PS1='\[$magenta\]\W\[$cyan\]$(\__git_ps1) \[$green\]\$ \[$reset\]'
+function set_tab_title {
+    echo -ne "\033]0; ${PWD##*/} $(__git_ps1)\007"
+}
+PROMPT_COMMAND="set_tab_title ; $PROMPT_COMMAND"
 
-# Fix incorrect text width in shell with custom PS1
 shopt -s checkwinsize
 
-# Use Homebrew apps first
 export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
+
+# Github Enterprise
+# export GITHUB_URL=https://xxx/
+# export GITHUB_HOST=xxx
+
+# Homebrew
+# export HOMEBREW_GITHUB_API_TOKEN=''
+
+# Ruby & Node
+eval "$(rbenv init -)"
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+# Quick Web Server!
+alias server='open http://localhost:8000 && python -m SimpleHTTPServer'
+
+# Shows a basic stat diff between current banch and remote master
+compare() { printf "Comparing current branch to origin/master...\n"; git fetch; git diff --stat origin/master...; }
