@@ -1,8 +1,13 @@
 # Vim Notes
 
-**TODO:** _Switch to Vundle for dependencies and plugins._
+## Installation
+
+    $ brew install macvim --override-system-vim
+    $ brew linkapps
 
 ## Plugins
+
+**TODO:** _Switch to Vundle for dependencies and plugins._
 
 - [NERDTree](https://github.com/scrooloose/nerdtree)
 - [Gundo](http://sjl.bitbucket.org/gundo.vim/)
