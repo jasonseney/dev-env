@@ -4,6 +4,7 @@ dev-env
 Various development environment configs, plugins, etc for development
 
 - Bash profile, used on OS X Terminal
+- Zsh profile, used on MacOS Terminal
 - Vim config
 - Terminal Color/Font Scheme
 
@@ -34,7 +35,3 @@ Various development environment configs, plugins, etc for development
 - `ruby-build` (install ruby versions)
 - `nvm` (node version manager)
 - `gulp` (asset build)
-
-## Setting up Ruby
-
-## Setting up Node
